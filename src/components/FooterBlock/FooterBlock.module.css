@@ -1,0 +1,9 @@
+.wrapper {
+	background: #b4a7d6;
+	border-top: #000 solid 2px;
+}
+
+.content {
+	padding: 20px;
+	margin: 0;
+}
