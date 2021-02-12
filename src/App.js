@@ -18,6 +18,11 @@ class App extends Component {
 
   inputRef = React.createRef();
 
+  handleStartClick = (e) => {
+    e.preventDefault();
+    this.inputRef.current.focus();
+  }
+
   handleEngInputChange = (e) => {
       console.log('###: ', e.target.value);
       this.setState({
@@ -74,23 +79,21 @@ class App extends Component {
     return (
       <>
         <HeaderBlock 
-          logo button
+          logo
         >
             <Header size='xl'>Learn words online</Header>
            <Paragraph>Use cards to memorize new words</Paragraph>
+           <a onClick={this.handleStartClick} className='button' href="">Get started</a>
            
         </HeaderBlock>
         <Section background='#decfab'>
           <Header size='m' small>Click on cards to see the translation!</Header>
-          <div>
-            {this.state.label}
-          </div>
           <form className='form' onSubmit={this.handleSubmitForm}>
           <label htmlFor="Eng">English:</label>
           <input id="Eng" ref={this.inputRef} type="text" value={this.state.engValue} 
             onChange={this.handleEngInputChange} />
           <label htmlFor="Rus">Russian:</label>
-          <input id="Rus" ref={this.inputRef} type="text" value={this.state.rusValue} 
+          <input id="Rus" type="text" value={this.state.rusValue} 
             onChange={this.handleRusInputChange} />
           <button>
             Add new word
