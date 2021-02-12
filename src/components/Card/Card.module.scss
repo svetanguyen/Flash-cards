@@ -4,10 +4,11 @@
   margin-bottom: 12px;
   cursor: pointer;
   perspective: 1000px;
-  height: 100px;
+  height: 35px;
   width: 200px;
   margin-right: 12px;
   display: flex;
+  align-items: center;
 
 }
 
@@ -23,6 +24,7 @@
   border-radius: 10px;
   text-align: center;
   transition: transform 0.6s;
+  margin-left: 20px;
   transform-style: preserve-3d;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
@@ -42,6 +44,17 @@
   padding: 6px 12px;
 }
 
+.isRemembered {
+  .cardFront, 
+  .cardBack {
+    text-decoration: line-through;
+  }
+
+  .icons {
+    color: #8625b9;
+  }
+}
+
 .cardFront {
   background-color: rgba(0, 0, 0, .4);
   color: #fff;
@@ -51,4 +64,12 @@
   background-color: rgba(75,16,106,0.70);
   color: white;
   transform: rotateY(180deg);
+}
+
+.icons {
+  font-size: 26px;
+  cursor: pointer;
+  &:hover {
+    color: #8625b9;
+  }
 }
