@@ -28,6 +28,34 @@
   color: #61dafb;
 }
 
+.form {
+  max-width: 250px;
+  margin: 0 auto 50px;
+  label {
+    color: #fff;
+    font-size: 20px;
+    display: block;
+    margin-bottom: 10px;
+  }
+  input {
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    border: none;
+    height: 30px;
+  }
+  button {
+    display: block;
+    margin: 20px auto 0;
+    background: #fff;
+    padding: 5px 20px;
+    border: none;
+    font-size: 14px;
+    
+
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

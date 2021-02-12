@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import s from './App.scss';
 import HeaderBlock from './components/HeaderBlock';
 import Paragraph from './components/Paragraph';
 import Header from './components/Header';
@@ -10,6 +11,45 @@ import { wordsList } from './wordlist';
 class App extends Component {
   state = {
     wordArr: wordsList,
+    engValue: '',
+    rusValue: '',
+    label: '',
+  };
+
+  inputRef = React.createRef();
+
+  handleEngInputChange = (e) => {
+      console.log('###: ', e.target.value);
+      this.setState({
+        engValue: e.target.value
+      })
+    };
+
+  handleRusInputChange = (e) => {
+      console.log('###: ', e.target.value);
+      this.setState({
+        rusValue: e.target.value
+      })
+    };
+
+  handleSubmitForm = (e) => {
+    e.preventDefault();
+    this.setState(({wordArr, engValue, rusValue}) => {
+      const newWordArr = [
+        ...wordArr
+      ];
+      newWordArr.push({
+          eng: engValue,
+          rus: rusValue,
+          id: wordArr.length + 1
+        })
+      console.log(newWordArr);
+      return {
+        wordArr: newWordArr
+      }
+    });
+
+    
   };
 
 
@@ -42,7 +82,20 @@ class App extends Component {
         </HeaderBlock>
         <Section background='#decfab'>
           <Header size='m' small>Click on cards to see the translation!</Header>
-          
+          <div>
+            {this.state.label}
+          </div>
+          <form className='form' onSubmit={this.handleSubmitForm}>
+          <label htmlFor="Eng">English:</label>
+          <input id="Eng" ref={this.inputRef} type="text" value={this.state.engValue} 
+            onChange={this.handleEngInputChange} />
+          <label htmlFor="Rus">Russian:</label>
+          <input id="Rus" ref={this.inputRef} type="text" value={this.state.rusValue} 
+            onChange={this.handleRusInputChange} />
+          <button>
+            Add new word
+          </button>
+        </form>
           <CardList onDeletedItem={this.handleDeletedItem} item={wordArr}/>
         </Section>
         <Section >
